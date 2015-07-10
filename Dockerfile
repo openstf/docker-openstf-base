@@ -9,7 +9,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y install wget && \
     cd /tmp && \
     wget --progress=dot:mega \
-      https://nodejs.org/dist/v0.12.6/node-v0.12.6.tar.gz && \
+      https://nodejs.org/dist/v0.12.7/node-v0.12.7.tar.gz && \
     cd /tmp && \
     apt-get -y install python build-essential ninja-build && \
     tar xzf node-v*.tar.gz && \
