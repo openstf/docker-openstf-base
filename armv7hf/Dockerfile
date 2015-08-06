@@ -17,7 +17,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     cd node-v* && \
     export CXX="g++ -Wno-unused-local-typedefs" && \
     ./configure && \
-    make && \
+    make -j $(nproc) && \
     make install && \
     rm -rf /tmp/node-v* && \
     cd /tmp && \
