@@ -25,3 +25,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y install libzmq3-dev libprotobuf-dev git graphicsmagick && \
     apt-get clean && \
     rm -rf /var/cache/apt/*
+
+# Temporary workaround for resin-io-library/resin-rpi-raspbian#3
+ENV PATH ${PATH:-/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin}
