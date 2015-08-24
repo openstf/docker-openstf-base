@@ -5,6 +5,14 @@ FROM resin/armv7hf-debian:jessie
 # installs development files for node-gyp so that npm install won't have to
 # wait for them on the first native module installation.
 RUN export DEBIAN_FRONTEND=noninteractive && \
+    useradd --system \
+      --create-home \
+      --shell /usr/sbin/nologin \
+      stf-build && \
+    useradd --system \
+      --no-create-home \
+      --shell /usr/sbin/nologin \
+      stf && \
     apt-get update && \
     apt-get -y install wget && \
     cd /tmp && \
@@ -21,10 +29,10 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     make install && \
     rm -rf /tmp/node-v* && \
     cd /tmp && \
-    /usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js install && \
+    sudo -u stf-build -H /usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js install && \
     apt-get -y install libzmq3-dev libprotobuf-dev git graphicsmagick && \
     apt-get clean && \
-    rm -rf /var/cache/apt/*
+    rm -rf /var/cache/apt/* /var/lib/apt/lists/*
 
 # Temporary workaround for resin-io-library/resin-rpi-raspbian#3
 ENV PATH ${PATH:-/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin}
