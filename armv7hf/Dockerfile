@@ -17,7 +17,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y install wget && \
     cd /tmp && \
     wget --progress=dot:mega \
-      https://nodejs.org/dist/v4.1.0/node-v4.1.0.tar.gz && \
+      https://nodejs.org/dist/v4.1.2/node-v4.1.2.tar.gz && \
     cd /tmp && \
     apt-get -y install python build-essential && \
     tar xzf node-v*.tar.gz && \
