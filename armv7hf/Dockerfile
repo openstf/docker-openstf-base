@@ -30,9 +30,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     make install && \
     rm -rf /tmp/node-v* && \
     cd /tmp && \
-    npm install -g npm@3.x && \
-    rm -rf /tmp/npm-* && \
-    rm -rf /root/.npm && \
     sudo -u stf-build -H /usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js install && \
     apt-get -y install libzmq3-dev libprotobuf-dev git graphicsmagick yasm && \
     apt-get clean && \
